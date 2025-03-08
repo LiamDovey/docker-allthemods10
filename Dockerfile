@@ -7,8 +7,10 @@ LABEL version="2.39"
 RUN apt-get update && apt-get install -y curl unzip jq && \
     adduser --uid 99 --gid 100 --home /data --disabled-password minecraft
 
-COPY launch.sh /launch.sh
-RUN chmod +x /launch.sh
+RUN ls
+
+COPY files/launch.sh ./launch.sh
+RUN chmod +x ./launch.sh
 
 USER minecraft
 
@@ -18,4 +20,3 @@ WORKDIR /data
 EXPOSE 25565/tcp
 
 CMD ["/launch.sh"]
- 
